@@ -12,10 +12,10 @@ async def admin_page():
     return 'Вы вошли как администратор'
 
 @app.get('/user/{user_id}')
-async def userid_page(user_id: int = Path(ge= 1, le= 100, description= 'Enter User ID', example= '1')):
+async def userid_page(user_id: Annotated[int, Path(ge= 1, le= 100, description= 'Enter User ID', example= '1')]):
     return f'Вы вошли как пользователь №{user_id}'
 
 @app.get('/user/{username}/{age}')
-async def user_page(username: str = Path(min_length= 5, max_length= 20, description= 'Enter username', example= 'UrbanUser'),
-                    age: int = Path(ge= 18, le= 120, description= 'Enter age', example= '24')):
+async def user_page(username: Annotated[str, Path(min_length= 5, max_length= 20, description= 'Enter username', example= 'UrbanUser')],
+                    age: Annotated[int, Path(ge= 18, le= 120, description= 'Enter age', example= '24')]):
     return f'Информация о пользователе. Имя: {username}, Возраст: {age}'
