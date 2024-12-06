@@ -1,11 +1,10 @@
 from fastapi import FastAPI, HTTPException, status, Body, Request
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
-from typing import List
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-templates = Jinja2Templates(directory= r'D:\Projects\H\.venv\templates2')
+templates = Jinja2Templates(directory= r'D:\Projects\FastAPI\Howeworks\templates2')
 
 users = []
 
