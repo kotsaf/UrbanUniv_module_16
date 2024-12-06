@@ -23,7 +23,7 @@ async def get_users(request: Request, user_id: int) -> HTMLResponse:
 
 @app.post('/user/{username}/{age}')
 async def create_user(username: str, age: int) -> User:
-    user_id = len(users) + 1
+    user_id = max(users, key=lambda usr: usr.id).id + 1 if users else 1              # изменения
     user = User(id=user_id, username=username, age=age)
     users.append(user)
     return user
